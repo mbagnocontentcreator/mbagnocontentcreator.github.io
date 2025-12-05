@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBB Apps - Matteo Bagno</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        .app-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+        }
+        .app-title {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        .app-tagline {
+            color: #888;
+        }
+        .app-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .app-links a {
+            color: #667eea;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #667eea;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .app-links a:hover {
+            background: #667eea;
+            color: #fff;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MBB Apps</h1>
+            <p class="subtitle">App sviluppate da Matteo Bagno</p>
+        </header>
+
+        <div class="app-card">
+            <div class="app-header">
+                <img src="portfolio-tracking-icon.png" alt="Portfolio Tracking" class="app-icon">
+                <div>
+                    <h2 class="app-title">Portfolio Tracking</h2>
+                    <p class="app-tagline">Monitora i tuoi investimenti</p>
+                </div>
+            </div>
+            <p>L'app essenziale per monitorare e analizzare le performance dei tuoi investimenti. Gestisci pi&ugrave; portafogli, visualizza grafici dettagliati e genera report PDF professionali.</p>
+            <div class="app-links">
+                <a href="portfolio-tracking/privacy.html">Privacy Policy</a>
+                <a href="portfolio-tracking/support.html">Supporto</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Matteo Bagno. Tutti i diritti riservati.</p>
+        </footer>
+    </div>
+</body>
+</html>
