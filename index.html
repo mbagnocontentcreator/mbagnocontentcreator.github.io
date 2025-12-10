@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MBB Apps - Matteo Bagno</title>
+    <title>MB Apps - Matteo Bagno</title>
+    <meta name="description" content="App sviluppate da Matteo Bagno. Scopri Portfolio Tracking e altre app per iOS.">
     <style>
         * {
             margin: 0;
@@ -18,16 +19,22 @@
             line-height: 1.6;
         }
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px;
         }
         header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+        }
+        .site-logo {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 24px;
         }
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -36,82 +43,249 @@
         }
         .subtitle {
             color: #888;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
+
+        /* Apps Grid */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* App Card */
         .app-card {
             background: rgba(255,255,255,0.05);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 30px;
-            margin-bottom: 30px;
             border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: rgba(102, 126, 234, 0.3);
         }
         .app-header {
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 16px;
+            margin-bottom: 16px;
         }
         .app-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 18px;
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
         .app-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: #fff;
+            margin-bottom: 2px;
         }
         .app-tagline {
             color: #888;
+            font-size: 0.95rem;
         }
+        .app-description {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        /* Platform Badge */
+        .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(102, 126, 234, 0.15);
+            color: #667eea;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+        .platform-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* App Store Button */
+        .app-store-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 1px solid #333;
+            margin-bottom: 16px;
+        }
+        .app-store-btn:hover {
+            background: #1a1a1a;
+            border-color: #555;
+            transform: scale(1.02);
+        }
+        .app-store-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+        .app-store-btn span {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1.2;
+        }
+        .app-store-btn .small-text {
+            font-size: 0.65rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        .app-store-btn .big-text {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* App Links */
         .app-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
         .app-links a {
             color: #667eea;
             text-decoration: none;
-            padding: 8px 16px;
-            border: 1px solid #667eea;
+            padding: 8px 14px;
+            border: 1px solid rgba(102, 126, 234, 0.4);
             border-radius: 8px;
             transition: all 0.3s;
+            font-size: 0.9rem;
         }
         .app-links a:hover {
-            background: #667eea;
-            color: #fff;
+            background: rgba(102, 126, 234, 0.15);
+            border-color: #667eea;
         }
+
+        /* Coming Soon Card */
+        .app-card.coming-soon {
+            opacity: 0.6;
+            border-style: dashed;
+        }
+        .app-card.coming-soon .app-icon {
+            filter: grayscale(0.5);
+        }
+        .coming-soon-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            color: #888;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: auto;
+        }
+
         footer {
             text-align: center;
             margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
             color: #666;
             font-size: 0.9rem;
+        }
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+            .app-card {
+                padding: 24px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>MBB Apps</h1>
+            <img src="logo.png" alt="MB Apps - Matteo Bagno" class="site-logo">
             <p class="subtitle">App sviluppate da Matteo Bagno</p>
         </header>
 
-        <div class="app-card">
-            <div class="app-header">
-                <img src="portfolio-tracking-icon.png" alt="Portfolio Tracking" class="app-icon">
-                <div>
-                    <h2 class="app-title">Portfolio Tracking</h2>
-                    <p class="app-tagline">Monitora i tuoi investimenti</p>
+        <div class="apps-grid">
+            <!-- Portfolio Tracking -->
+            <div class="app-card">
+                <div class="app-header">
+                    <img src="portfolio-tracking-icon.png" alt="Portfolio Tracking" class="app-icon">
+                    <div>
+                        <h2 class="app-title">Portfolio Tracking</h2>
+                        <p class="app-tagline">Monitora i tuoi investimenti</p>
+                    </div>
+                </div>
+
+                <div class="platform-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="2" width="16" height="20" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="12" y1="18" x2="12" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    Disponibile su iPad
+                </div>
+
+                <p class="app-description">L'app essenziale per monitorare e analizzare le performance dei tuoi investimenti. Gestisci pi&ugrave; portafogli, visualizza grafici dettagliati e genera report PDF professionali.</p>
+
+                <a href="https://apps.apple.com/it/app/portfolio-tracking/id6756198088" class="app-store-btn" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <span>
+                        <span class="small-text">Scarica su</span>
+                        <span class="big-text">App Store</span>
+                    </span>
+                </a>
+
+                <div class="app-links">
+                    <a href="portfolio-tracking/privacy.html">Privacy Policy</a>
+                    <a href="portfolio-tracking/support.html">Supporto</a>
                 </div>
             </div>
-            <p>L'app essenziale per monitorare e analizzare le performance dei tuoi investimenti. Gestisci pi&ugrave; portafogli, visualizza grafici dettagliati e genera report PDF professionali.</p>
-            <div class="app-links">
-                <a href="portfolio-tracking/privacy.html">Privacy Policy</a>
-                <a href="portfolio-tracking/support.html">Supporto</a>
+
+            <!-- Placeholder per future app - puoi rimuovere o commentare questa sezione -->
+            <!--
+            <div class="app-card coming-soon">
+                <div class="app-header">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div>
+                        <h2 class="app-title">Nuova App</h2>
+                        <p class="app-tagline">In arrivo</p>
+                    </div>
+                </div>
+                <p class="app-description">Una nuova app entusiasmante è in fase di sviluppo. Resta sintonizzato per scoprire di più!</p>
+                <span class="coming-soon-badge">Prossimamente</span>
             </div>
+            -->
         </div>
 
         <footer>
             <p>&copy; 2025 Matteo Bagno. Tutti i diritti riservati.</p>
+            <p style="margin-top: 8px;"><a href="mailto:info@matteobagno.com">info@matteobagno.com</a></p>
         </footer>
     </div>
 </body>
